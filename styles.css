@@ -1,0 +1,42 @@
+@font-face {
+    font-family: digital-7;
+    src: url("/font/digital-7.ttf");
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30pt;
+}
+
+h1 {
+    font-size: 70pt;
+}
+
+.clock-container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    top: 0;
+    height: 100vh;
+}
+
+.clock-numbers{
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 20pt;
+    min-height: 25vh;
+    min-width: 30vw;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.minutes, .seconds, #colon {
+    font-family: digital-7;
+    color: red;
+}
+
