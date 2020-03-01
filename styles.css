@@ -11,48 +11,65 @@
     100%{   color: transparent;    }
 }
 
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 30pt;
     background-color: #333;
+    overflow: hidden;
 }
 
-button {
-    cursor: pointer;
-    outline: none;
+.title {
+    font-size: 30pt;
+    text-align: center;
+    color: #ffffff;
 }
 
-.clock-container{
-    display: flex;
-    position: relative;
+.timer-container {
+    /* display: flex; */
+    position: absolute;
+    border: solid #ffffff;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    top: 0;
-    height: 100vh;
+    /* height: 50vh;
+    width: 40vw; */
+    height: auto;
+    top: 50vh;
+    width: 400px;
+    left: 50vw;
+    transform: translate(-50%, -60%);
 }
 
-.clock-numbers{
+.timer-container p{
+    color: #ffffff;
+}
+
+.top-content {
     display: flex;
-    position: fixed;
     flex-direction: row;
     justify-content: center;
-    background-color: black;
     align-items: center;
-    letter-spacing: 30pt;
-    min-height: 25vh;
-    min-width: 30vw;
-    border-radius: 20px;
-    padding-left: 20pt;
 }
 
-.minutes, .seconds, #colon {
+.top-content p {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 25pt;
+}
+
+.timer {
+    text-align: center;
+    font-size: 56pt;
+    font-family: digital-7;
+}
+
+/* .timer {
     font-family: digital-7;
     color: red;
-}
-
+} */
+/* 
 #colon {
     animation: blinkingText 1.5s infinite;
-}
+} */
+
 
