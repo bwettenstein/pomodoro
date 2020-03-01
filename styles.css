@@ -58,10 +58,15 @@ body {
 }
 
 .timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
     font-size: 56pt;
     font-family: digital-7;
 }
+
+
 
 /* .timer {
     font-family: digital-7;
