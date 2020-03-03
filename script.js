@@ -42,7 +42,9 @@ stopButton.addEventListener('click', () => {
 
 const toggleClock = (resetClock) => {
     if (resetClock) {
+        stopClock();
         // Stop the clock
+        
     } else {
         if (clockActive === true) {
             // Pause the clock
@@ -50,13 +52,24 @@ const toggleClock = (resetClock) => {
             clockActive = false;
         } else {
             // Start the clock
-            clockActive= true;
+            clockActive = true;
             clockTimer = setInterval(() => {
                 timeLeftInSession--;
                 updateDisplay();
             }, 1000)
         } 
     }
+}
+
+const stopClock = () => {
+    // Reset the timer
+    clearInterval(clockTimer);
+    // Set the clock's status to false
+    clockActive = false;
+    // Reset the session time
+    timeLeftInSession = currentSession;
+    // Update the display
+    updateDisplay();
 }
 
 const updateDisplay = () => {
