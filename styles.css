@@ -51,6 +51,10 @@ body {
     align-items: center;
 }
 
+.top-content button {
+    cursor: pointer;
+}
+
 .top-content p {
     padding-left: 20px;
     padding-right: 20px;

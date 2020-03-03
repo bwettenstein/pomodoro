@@ -1,6 +1,3 @@
-// const tensMin = document.getElementById('tens-minute');
-// const addTensMin = document.getElementById('tens-min-add');
-// const subTensMin = document.getElementById('tens-min-sub');
 
 // addTensMin.addEventListener('click', () => {
 //     tensMin.innerHTML = parseInt(tensMin.innerHTML) + 1;
@@ -10,30 +7,82 @@
 //     tensMin.innerHTML = parseInt(tensMin.innerHTML) - 1;
 // })
 
-const tensPlaceMin = document.getElementById('tens-minute');
-const onesPlaceMin = document.getElementById('ones-minute');
-const colon = document.getElementById('colon');
-const tensPlaceSec = document.getElementById('tens-second');
-const onesPlaceSec = document.getElementById('ones-second');
+
+const title = document.getElementById('web-title');
+
+const displayedTime = document.getElementById('displayed-time');
 
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
-const resetButton = document.getElementById('reset');
+const stopButton = document.getElementById('stop');
 
-let defaultTime = tensPlaceMin.innerHTML + onesPlaceMin.innerHTML +  
-    colon.innerHTML + tensPlaceSec.innerHTML + onesPlaceSec.innerHTML;
+let clockActive = false;
 
-const reset = () => {
-    tensPlaceMin.innerHTML = "2";
-    onesPlaceMin.innerHTML = "5";
-    tensPlaceSec.innerHTML = "0";
-    onesPlaceSec.innerHTML = "0";
+const defaultSession = 1500;
+const defaultBreak = 300;
+
+// 25 minutes in seconds
+let currentSession = defaultSession;
+let timeLeftInSession = defaultSession;
+
+// 5 minutes in seconds
+let currentBreak = defaultBreak;
+
+startButton.addEventListener('click', () => {
+    toggleClock();
+})
+
+pauseButton.addEventListener('click', () => {
+    toggleClock();
+})
+
+stopButton.addEventListener('click', () => {
+    toggleClock(true);
+})
+
+const toggleClock = (resetClock) => {
+    if (resetClock) {
+        // Stop the clock
+    } else {
+        if (clockActive === true) {
+            // Pause the clock
+            clearInterval(clockTimer);
+            clockActive = false;
+        } else {
+            // Start the clock
+            clockActive= true;
+            clockTimer = setInterval(() => {
+                timeLeftInSession--;
+                updateDisplay();
+            }, 1000)
+        } 
+    }
 }
 
-resetButton.addEventListener('click', () => {
-    tensPlaceMin.innerHTML = "2";
-    onesPlaceMin.innerHTML = "5";
-    tensPlaceSec.innerHTML = "0";
-    onesPlaceSec.innerHTML = "0";
-});
+const updateDisplay = () => {
+    const secLeft = timeLeftInSession;
+    let result = '';
+    const seconds = secLeft % 60;
+    const minutes = parseInt(secLeft/60) % 60;
+    let hours = parseInt(secLeft/3600);
+
+    if (hours > 0) {
+        result += `${hours}:`;
+    } 
+    result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`;   
+    displayedTime.innerText = result;
+}
+
+    // If the number is less than 10, there should be a 0 next to it 
+    // EX - If there are 8 seconds left, it should be displayed as 08
+let addLeadingZeroes = (time) => {
+    if (time < 10) {
+        return `0${time}`;
+    } else {
+        return time;
+    }
+}
+
+
+
 

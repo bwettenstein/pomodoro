@@ -6,23 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="styles.css" type="text/css" rel="stylesheet">
     <script defer src="script.js"></script>
-    <title>Pomodoro</title>
+    <title id='web-title'>Pomodoro</title>
 </head>
 <body>
     <div class="app-container">
         <h1 class="title">Pomodoro</h1>
         <div class="timer-container">
             <div class="top-content">
-                <button>Start/Pause</button>
+                <button id="start">Start</button>
+                <button id="pause">Pause</button>
                 <p>Time to work</p>
-                <button>Reset</button>
+                <button id="stop">Stop</button>
             </div>
             <div class="timer">
-                <p>2</p>
-                <p>5</p>
-                <p class="colon">:</p>
-                <p class="tens-second">0</p>
-                <p class="ones-second">0</p>
+                <p id="displayed-time"></p>
             </div>
         </div>
     </div>
