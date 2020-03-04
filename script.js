@@ -16,17 +16,24 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const stopButton = document.getElementById('stop');
 
-let clockActive = false;
+// The text on the tab will change based on the time that is left
+const tabText = document.getElementById('web-title');
 
-const defaultSession = 1500;
-const defaultBreak = 300;
+let clockActive = false;
+let sessionType = "work"
 
 // 25 minutes in seconds
-let currentSession = defaultSession;
+const defaultSession = 1500;
+// 5 minutes in seconds
+const defaultBreak = 300;
+
+let newWorkDuration;
+let newBreakDuration;
+
+let currentWorkDuration = defaultSession;
 let timeLeftInSession = defaultSession;
 
-// 5 minutes in seconds
-let currentBreak = defaultBreak;
+let currentBreakDuration = defaultBreak;
 
 startButton.addEventListener('click', () => {
     toggleClock();
@@ -43,8 +50,7 @@ stopButton.addEventListener('click', () => {
 const toggleClock = (resetClock) => {
     if (resetClock) {
         stopClock();
-        // Stop the clock
-        
+        // Stop the clock   
     } else {
         if (clockActive === true) {
             // Pause the clock
@@ -61,15 +67,31 @@ const toggleClock = (resetClock) => {
     }
 }
 
+const decreaseTime = () => {
+    if (timeLeftInSession > 0) {
+        timeLeftInSession--;
+    } else if (timeLeftInSession == 0) {
+        if (type == "work") {
+            timeLeftInSession = currentBreakDuration;
+            type = "break";
+        } else {
+            timeLeftInSession = currentWorkDuration;
+            type = "work";
+        }
+    }
+    updateDisplay();
+}
+
 const stopClock = () => {
     // Reset the timer
     clearInterval(clockTimer);
     // Set the clock's status to false
     clockActive = false;
     // Reset the session time
-    timeLeftInSession = currentSession;
+    timeLeftInSession = currentWorkDuration;
     // Update the display
     updateDisplay();
+    sessionType = "work";
 }
 
 const updateDisplay = () => {
@@ -84,6 +106,7 @@ const updateDisplay = () => {
     } 
     result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`;   
     displayedTime.innerText = result;
+    tabText.innerText = result;
 }
 
     // If the number is less than 10, there should be a 0 next to it 
