@@ -1,16 +1,10 @@
-
-// addTensMin.addEventListener('click', () => {
-//     tensMin.innerHTML = parseInt(tensMin.innerHTML) + 1;
-// })
-
-// subTensMin.addEventListener('click', () => {
-//     tensMin.innerHTML = parseInt(tensMin.innerHTML) - 1;
-// })
-
-
 const title = document.getElementById('web-title');
 
 const displayedTime = document.getElementById('displayed-time');
+
+const hamburgerIcon = document.querySelector('.change-settings');
+const timerContainer = document.querySelector('.timer-container');
+const settings = document.querySelector('.settings');
 
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
@@ -34,6 +28,16 @@ let currentWorkDuration = defaultSession;
 let timeLeftInSession = defaultSession;
 
 let currentBreakDuration = defaultBreak;
+
+hamburgerIcon.addEventListener('click', () => {
+    if (timerContainer.className === "timer-container") {
+        timerContainer.classList.add("inactive");
+        settings.classList.add("active");
+    } else {
+        timerContainer.classList.remove("inactive");
+        settings.classList.remove("active");
+    }
+})
 
 startButton.addEventListener('click', () => {
     toggleClock();

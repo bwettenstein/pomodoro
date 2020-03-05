@@ -18,6 +18,10 @@ body {
     overflow: hidden;
 }
 
+button:focus {
+    outline: none;
+}
+
 .title {
     font-size: 30pt;
     text-align: center;
@@ -86,6 +90,46 @@ body {
     opacity: 0.8;
 }
 
+.settings {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.settings.active {
+    opacity: 1;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.settings.active p {
+    justify-content: center;
+    text-align: center;
+}
+
+.work-settings, .break-settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Replace buttons with icons from font-awesome */
+.settings.active button {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    height: 40px;
+    width: 20px;
+}
+
+.timer-container.inactive {
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.work-time, .break-time {
+    padding: 0px 10px;
+}
 
 /* .timer {
     font-family: digital-7;
