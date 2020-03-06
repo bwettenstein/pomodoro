@@ -14,7 +14,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 30pt;
-    background-color: #333;
+    /* background-color: #333; */
+    background-color: #FAFAFA;
     overflow: hidden;
 }
 
@@ -22,17 +23,15 @@ button:focus {
     outline: none;
 }
 
-.title {
+/* .title {
     font-size: 30pt;
     text-align: center;
     color: #ffffff;
-}
+} */
 
 .timer-container {
     /* display: flex; */
     position: absolute;
-    border: solid #ffffff;
-    border-radius: 20px;
     justify-content: center;
     align-items: center;
     /* height: 50vh;
@@ -44,9 +43,9 @@ button:focus {
     transform: translate(-50%, -60%);
 }
 
-.timer-container p{
+/* .timer-container p{
     color: #ffffff;
-}
+} */
 
 .top-content {
     display: flex;
@@ -82,7 +81,6 @@ button:focus {
     height: 40px;
     width: 30px;
     opacity: 0.6;
-    color: #ffffff;
 }
 
 #hamburger-icon:hover {
@@ -106,6 +104,10 @@ button:focus {
     text-align: center;
 }
 
+.settings-title {
+    margin-bottom: 0;
+}
+
 .work-settings, .break-settings {
     display: flex;
     flex-direction: row;
@@ -117,9 +119,6 @@ button:focus {
 .settings.active button {
     cursor: pointer;
     text-align: center;
-    border-radius: 10px;
-    height: 40px;
-    width: 20px;
 }
 
 .timer-container.inactive {
@@ -127,7 +126,7 @@ button:focus {
     pointer-events: none;
 }
 
-.work-time, .break-time {
+.session-time, .break-time {
     padding: 0px 10px;
 }
 

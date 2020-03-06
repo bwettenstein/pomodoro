@@ -16,21 +16,22 @@
             <i id="hamburger-icon" class="fas fa-bars"></i>
         </div>
         <div class="settings">
-            <p>Work</p>
+            <p class="settings-title">Work</p>
             <div class="work-settings">
-                <button class="add-work-time">+</button>
-                <p class="work-time">25:00</p>
-                <button class="decrease-work-time">-</button>
+                <button class="add-session-time">+</button>
+                <p class="session-time">25</p>
+                <button class="decrease-session-time">-</button>
             </div>
-            <p>Break</p>
+            <p class="settings-title">Break</p>
             <div class="break-settings">
                 <button class="add-break-time">+</button>
-                <p class="break-time">5:00</p>
+                <p class="break-time">5</p>
                 <button class="decrease-break-time">-</button>
             </div>
         </div>
         <div class="timer-container">
             <div class="top-content">
+                <!-- Combine start and pause as one button, clicking the button alternates the icon -->
                 <button id="start">Start</button>
                 <button id="pause">Pause</button>
                 <p>Time to work</p>

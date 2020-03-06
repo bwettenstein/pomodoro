@@ -2,9 +2,19 @@ const title = document.getElementById('web-title');
 
 const displayedTime = document.getElementById('displayed-time');
 
+// Declaration for settings 
 const hamburgerIcon = document.querySelector('.change-settings');
 const timerContainer = document.querySelector('.timer-container');
 const settings = document.querySelector('.settings');
+
+const addSessionTimeButton = document.querySelector('.add-session-time');
+const decSessionTimeButton = document.querySelector('.decrease-session-time');
+const sessionTimeInSettings = document.querySelector('.session-time');
+const addBreakTimeButton = document.querySelector('.add-break-time');
+const decBreakTimeButton = document.querySelector('.decrease-break-time');
+const breakTimeInSettings = document.querySelector('.break-time');
+
+//
 
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
@@ -29,6 +39,7 @@ let timeLeftInSession = defaultSession;
 
 let currentBreakDuration = defaultBreak;
 
+// Button declarations for settings
 hamburgerIcon.addEventListener('click', () => {
     if (timerContainer.className === "timer-container") {
         timerContainer.classList.add("inactive");
@@ -38,6 +49,21 @@ hamburgerIcon.addEventListener('click', () => {
         settings.classList.remove("active");
     }
 })
+
+addSessionTimeButton.addEventListener('click', () => {
+    modifySessionTime("add");
+    sessionTimeInSettings.innerText = parseInt(sessionTimeInSettings.innerHTML) + 1;
+})
+
+decSessionTimeButton.addEventListener('click', () => {
+    if (sessionTimeInSettings.innerText - 1 === 0) {
+        alert("You cannot have a session that lasts less than 1 minute");
+    } else {
+        modifySessionTime("dec");
+        sessionTimeInSettings.innerText = parseInt(sessionTimeInSettings.innerText) - 1;
+    }
+})
+
 
 startButton.addEventListener('click', () => {
     toggleClock();
@@ -121,6 +147,17 @@ let addLeadingZeroes = (time) => {
     } else {
         return time;
     }
+}
+
+const modifySessionTime = (action) => {
+    let newTimeInSec;
+    if (action === "add") {
+        newTimeInSec = [parseInt(sessionTimeInSettings.innerText) + 1] * 60;
+    } else {
+        newTimeInSec = [parseInt(sessionTimeInSettings.innerText) - 1] * 60;
+    }
+    currentWorkDuration = newTimeInSec;
+    timeLeftInSession = currentWorkDuration;
 }
 
 
