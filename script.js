@@ -53,14 +53,31 @@ hamburgerIcon.addEventListener('click', () => {
 addSessionTimeButton.addEventListener('click', () => {
     modifySessionTime("add");
     sessionTimeInSettings.innerText = parseInt(sessionTimeInSettings.innerHTML) + 1;
+    updateDisplay();
 })
 
+// BUGGED if you set the session to 1 minute and the break to 1 minute 
 decSessionTimeButton.addEventListener('click', () => {
     if (sessionTimeInSettings.innerText - 1 === 0) {
         alert("You cannot have a session that lasts less than 1 minute");
     } else {
         modifySessionTime("dec");
         sessionTimeInSettings.innerText = parseInt(sessionTimeInSettings.innerText) - 1;
+    }
+    updateDisplay();
+})
+
+addBreakTimeButton.addEventListener('click', () => {
+    modifyBreakTime("add");
+    breakTimeInSettings.innerText = parseInt(breakTimeInSettings.innerHTML) + 1; 
+})
+
+decBreakTimeButton.addEventListener('click', () => {
+    if (breakTimeInSettings.innerText - 1 === 0) {
+        alert("You cannot have a break that lasts less than 1 minute");
+    } else {
+        modifySessionTime("dec");
+        breakTimeInSettings.innerText = parseInt(breakTimeInSettings.innerText) - 1;
     }
 })
 
@@ -88,11 +105,11 @@ const toggleClock = (resetClock) => {
             clockActive = false;
         } else {
             // Start the clock
-            clockActive = true;
             clockTimer = setInterval(() => {
-                timeLeftInSession--;
+                decreaseTime();
                 updateDisplay();
-            }, 1000)
+            }, 1000);
+            clockActive = true;
         } 
     }
 }
@@ -101,12 +118,12 @@ const decreaseTime = () => {
     if (timeLeftInSession > 0) {
         timeLeftInSession--;
     } else if (timeLeftInSession == 0) {
-        if (type == "work") {
+        if (sessionType == "work") {
             timeLeftInSession = currentBreakDuration;
-            type = "break";
+            sessionType = "break";
         } else {
             timeLeftInSession = currentWorkDuration;
-            type = "work";
+            sessionType = "work";
         }
     }
     updateDisplay();
@@ -158,6 +175,16 @@ const modifySessionTime = (action) => {
     }
     currentWorkDuration = newTimeInSec;
     timeLeftInSession = currentWorkDuration;
+}
+
+const modifyBreakTime = (action) => {
+    let newTimeInSec;
+    if (action === "add") {
+        newTimeInSec = [parseInt(breakTimeInSettings.innerText) + 1] * 60;
+    } else {
+        newTimeInSec = [parseInt(breakTimeInSettings.innerText) - 1] * 60;
+    }
+    currentBreakDuration = newTimeInSec;
 }
 
 

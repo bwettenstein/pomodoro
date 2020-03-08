@@ -58,10 +58,11 @@ button:focus {
     cursor: pointer;
 }
 
-.top-content p {
+.session-statement {
     padding-left: 20px;
     padding-right: 20px;
     font-size: 25pt;
+    margin: 0;
 }
 
 .timer {
