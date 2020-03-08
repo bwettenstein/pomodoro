@@ -16,9 +16,11 @@ const breakTimeInSettings = document.querySelector('.break-time');
 
 //
 
-const startButton = document.getElementById('start');
-const pauseButton = document.getElementById('pause');
-const stopButton = document.getElementById('stop');
+const sessionStatement = document.querySelector('.session-statement');
+
+const startButton = document.querySelector('#start');
+const pauseButton = document.querySelector('#pause');
+const stopButton = document.querySelector('#stop');
 
 // The text on the tab will change based on the time that is left
 const tabText = document.getElementById('web-title');
@@ -126,6 +128,7 @@ const decreaseTime = () => {
             sessionType = "work";
         }
     }
+    updateSessionStatement(sessionType);
     updateDisplay();
 }
 
@@ -154,6 +157,14 @@ const updateDisplay = () => {
     result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`;   
     displayedTime.innerText = result;
     tabText.innerText = result;
+}
+
+const updateSessionStatement = (sessionType) => {
+    if (sessionType === "work") {
+        sessionStatement.innerText = "Time to work";
+    } else {
+        sessionStatement.innerText = "Time to take a break!";
+    }
 }
 
     // If the number is less than 10, there should be a 0 next to it 
@@ -186,6 +197,7 @@ const modifyBreakTime = (action) => {
     }
     currentBreakDuration = newTimeInSec;
 }
+
 
 
 
