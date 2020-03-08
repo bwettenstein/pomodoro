@@ -112,6 +112,7 @@ const toggleClock = (resetClock) => {
                 updateDisplay();
             }, 1000);
             clockActive = true;
+
         } 
     }
 }
@@ -197,8 +198,3 @@ const modifyBreakTime = (action) => {
     }
     currentBreakDuration = newTimeInSec;
 }
-
-
-
-
-

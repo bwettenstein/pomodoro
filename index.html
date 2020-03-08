@@ -18,24 +18,26 @@
         <div class="settings">
             <p class="settings-title">Work</p>
             <div class="work-settings">
-                <button class="add-session-time">+</button>
+                <button class="add-session-time"><i id="add-session-icon" class="fas fa-angle-up"></i></button>
                 <p class="session-time">25</p>
-                <button class="decrease-session-time">-</button>
+                <button class="decrease-session-time"><i id="dec-session-icon" class="fas fa-angle-down"></i></button>
             </div>
             <p class="settings-title">Break</p>
             <div class="break-settings">
-                <button class="add-break-time">+</button>
+                <button class="add-break-time"><i id="add-break-icon" class="fas fa-angle-up"></i></button>
                 <p class="break-time">5</p>
-                <button class="decrease-break-time">-</button>
+                <button class="decrease-break-time"><i id="dec-break-icon" class="fas fa-angle-down"></i></button>
             </div>
         </div>
         <div class="timer-container">
             <div class="top-content">
                 <!-- Combine start and pause as one button, clicking the button alternates the icon -->
-                <button id="start">Start</button>
-                <button id="pause">Pause</button>
+                <button id="start"><i id="start-icon" class="fas fa-play"></i></button>
+                <!-- <button id="start">Start</button> -->
+                <!-- <i id="start" class="fas fa-play"></i> -->
+                <button id="pause"><i id="pause-icon" class="fas fa-pause"></i></button>
                 <p class="session-statement">Time to work</p>
-                <button id="stop">Stop</button>
+                <button id="stop"><i id="stop-icon" class="fas fa-stop"></i></button>
             </div>
             <div class="timer">
                 <p id="displayed-time">25:00</p>

@@ -62,8 +62,33 @@ button:focus {
     padding-left: 20px;
     padding-right: 20px;
     font-size: 25pt;
+    width: 650px;
     margin: 0;
 }
+
+/* Button styling */
+#start, #pause, #stop {
+    border: none;
+    height: 50px;
+    width: 80px;
+    opacity: 0.6;
+    background: none;
+}
+
+#start:hover, #pause:hover, #stop:hover {
+    opacity: 1;
+}
+
+#start:focus, #pause:focus, #stop:focus {
+    outline: none;
+}
+
+#start-icon, #pause-icon, #stop-icon {
+    width: 40px;
+    height: 30px;
+}
+
+/* End button styling */
 
 .timer {
     display: flex;
@@ -74,6 +99,7 @@ button:focus {
     font-family: digital-7;
 }
 
+/* Begin setting styling */
 #hamburger-icon {
     position: fixed;
     top: 0;
@@ -87,6 +113,10 @@ button:focus {
 #hamburger-icon:hover {
     cursor: pointer;
     opacity: 0.8;
+}
+
+#hamburger-icon:focus {
+    transition: 1s;
 }
 
 .settings {
@@ -116,10 +146,28 @@ button:focus {
     align-items: center;
 }
 
-/* Replace buttons with icons from font-awesome */
-.settings.active button {
+/* .settings.active button {
     cursor: pointer;
     text-align: center;
+} */
+
+.add-session-time, .decrease-session-time, .add-break-time, .decrease-break-time {
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+}
+
+#add-session-icon, #dec-session-icon, #add-break-icon, #dec-break-icon {
+    height: 40px;
+    width: 30px;
+    opacity: 0.8;
+}
+
+#add-session-icon:hover, #dec-session-icon:hover, #add-break-icon:hover, #dec-break-icon:hover {
+    opacity: 1;
 }
 
 .timer-container.inactive {
@@ -130,7 +178,7 @@ button:focus {
 .session-time, .break-time {
     padding: 0px 10px;
 }
-
+/* End of session styling */
 /* .timer {
     font-family: digital-7;
     color: red;
