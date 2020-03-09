@@ -13,10 +13,10 @@ const sessionTimeInSettings = document.querySelector('.session-time');
 const addBreakTimeButton = document.querySelector('.add-break-time');
 const decBreakTimeButton = document.querySelector('.decrease-break-time');
 const breakTimeInSettings = document.querySelector('.break-time');
-
-//
+// End declaration for settings
 
 const sessionStatement = document.querySelector('.session-statement');
+const completedSessionsStatement = document.querySelector('.completed-sessions');
 
 const startButton = document.querySelector('#start');
 const pauseButton = document.querySelector('#pause');
@@ -41,6 +41,8 @@ let timeLeftInSession = defaultSession;
 
 let currentBreakDuration = defaultBreak;
 
+let completedSessions = 0;
+
 // Button declarations for settings
 hamburgerIcon.addEventListener('click', () => {
     if (timerContainer.className === "timer-container") {
@@ -60,9 +62,7 @@ addSessionTimeButton.addEventListener('click', () => {
 
 // BUGGED if you set the session to 1 minute and the break to 1 minute 
 decSessionTimeButton.addEventListener('click', () => {
-    if (sessionTimeInSettings.innerText - 1 === 0) {
-        alert("You cannot have a session that lasts less than 1 minute");
-    } else {
+    if (sessionTimeInSettings.innerText - 1 !== 0) {
         modifySessionTime("dec");
         sessionTimeInSettings.innerText = parseInt(sessionTimeInSettings.innerText) - 1;
     }
@@ -75,9 +75,7 @@ addBreakTimeButton.addEventListener('click', () => {
 })
 
 decBreakTimeButton.addEventListener('click', () => {
-    if (breakTimeInSettings.innerText - 1 === 0) {
-        alert("You cannot have a break that lasts less than 1 minute");
-    } else {
+    if (breakTimeInSettings.innerText - 1 !== 0) {
         modifySessionTime("dec");
         breakTimeInSettings.innerText = parseInt(breakTimeInSettings.innerText) - 1;
     }
@@ -124,6 +122,8 @@ const decreaseTime = () => {
         if (sessionType == "work") {
             timeLeftInSession = currentBreakDuration;
             sessionType = "break";
+            completedSessions++;
+            displayCompletedSessions();
         } else {
             timeLeftInSession = currentWorkDuration;
             sessionType = "work";
@@ -166,6 +166,10 @@ const updateSessionStatement = (sessionType) => {
     } else {
         sessionStatement.innerText = "Time to take a break!";
     }
+}
+
+const displayCompletedSessions = () => {
+    completedSessionsStatement.innerText = completedSessions;
 }
 
     // If the number is less than 10, there should be a 0 next to it 

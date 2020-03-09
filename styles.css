@@ -146,11 +146,6 @@ button:focus {
     align-items: center;
 }
 
-/* .settings.active button {
-    cursor: pointer;
-    text-align: center;
-} */
-
 .add-session-time, .decrease-session-time, .add-break-time, .decrease-break-time {
     border: none;
     background: none;
@@ -179,13 +174,22 @@ button:focus {
     padding: 0px 10px;
 }
 /* End of session styling */
-/* .timer {
-    font-family: digital-7;
-    color: red;
-} */
-/* 
-#colon {
-    animation: blinkingText 1.5s infinite;
-} */
 
+/* Begin session counter styling */
+.session-info {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transform: translate(0vh, 300px);
+}
+
+.session-info p {
+    margin-top: auto;
+}
+
+.completed-sessions {
+    padding-left: 5px;
+}
 
